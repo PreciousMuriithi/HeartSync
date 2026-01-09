@@ -3,18 +3,29 @@
 
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="viewport"
+        content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover">
     <meta name="description"
-        content="HeartSync - Where Psychology Meets Physiology. A revolutionary couples app that connects emotional intelligence with biological rhythms for deeper relationships.">
+        content="HeartSync - Where Psychology Meets Physiology. Revolutionary biofeedback technology for couples to track emotional sync, heart rate harmony, and relationship wellness.">
     <meta name="keywords"
-        content="couples app, relationship, psychology, physiology, heart rate, mood tracking, love, connection">
+        content="couples app, biofeedback, heart rate variability, HRV, relationship, psychology, physiology, emotional sync">
     <meta name="author" content="Precious & Safari">
     <meta name="theme-color" content="#0A0A0C">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
 
-    <title>HeartSync | Where Psychology Meets Physiology 💕</title>
+    <!-- Open Graph -->
+    <meta property="og:title" content="HeartSync | Where Psychology Meets Physiology">
+    <meta property="og:description"
+        content="Revolutionary biofeedback technology for couples. Track emotional sync, heart rate harmony, and relationship wellness.">
+    <meta property="og:type" content="website">
+
+    <title>HeartSync 💕 | Where Psychology Meets Physiology</title>
 
     <!-- Favicon -->
     <link rel="icon"
+        href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>💕</text></svg>">
+    <link rel="apple-touch-icon"
         href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>💕</text></svg>">
 
     <!-- Google Fonts -->
@@ -27,540 +38,444 @@
 </head>
 
 <body>
-    <!-- Animated Background -->
+    <!-- Background Effects -->
     <div class="bg-gradient"></div>
-    <div class="floating-hearts" id="floatingHearts"></div>
+    <div class="floating-elements" id="floatingElements"></div>
 
-    <!-- Navigation -->
-    <nav id="navbar">
-        <div class="nav-container">
-            <a href="#" class="logo">
-                <span class="logo-emoji">💕</span>
-                <span>HeartSync</span>
-            </a>
-            <div class="nav-links">
-                <a href="#how-it-works">How It Works</a>
-                <a href="#demo">Live Demo</a>
-                <a href="#features">Features</a>
-                <a href="#demo" class="btn-nav">Try Demo</a>
-            </div>
-            <button class="mobile-menu-btn" aria-label="Menu" onclick="toggleMobileMenu()">☰</button>
-        </div>
-    </nav>
-
-    <!-- Hero Section -->
-    <section class="hero">
+    <!-- ============================================
+         HERO SECTION - App Dashboard Preview
+         ============================================ -->
+    <section class="hero-section">
         <div class="hero-content">
-            <div class="hero-badge">
-                <span class="hero-badge-dot"></span>
-                <span>Psychology × Physiology</span>
-            </div>
-            <h1>
-                <span class="gradient-text">HeartSync</span>
-            </h1>
-            <p class="hero-tagline">Where Psychology Meets Physiology</p>
-            <p class="hero-description">
-                Revolutionary couples technology that bridges emotional intelligence with biological rhythms.
-                Track moods, sync heartbeats, and build deeper connections through the science of love.
-            </p>
-            <div class="hero-buttons">
-                <a href="#demo" class="btn-primary">
-                    <span>✨</span>
-                    <span>Experience Demo</span>
-                </a>
-                <a href="#how-it-works" class="btn-secondary">
-                    <span>🧠</span>
-                    <span>Learn the Science</span>
-                </a>
-            </div>
-
-            <div class="hero-metrics">
-                <div class="metric">
-                    <div class="metric-icon">🧬</div>
-                    <div class="metric-text">
-                        <span class="metric-value">Bio-Sync</span>
-                        <span class="metric-label">Technology</span>
-                    </div>
+            <div class="hero-text">
+                <div class="launch-badge">
+                    <span class="pulse-dot"></span>
+                    <span>Biofeedback Technology for Couples</span>
                 </div>
-                <div class="metric-divider"></div>
-                <div class="metric">
-                    <div class="metric-icon">🔐</div>
-                    <div class="metric-text">
-                        <span class="metric-value">E2E</span>
-                        <span class="metric-label">Encrypted</span>
-                    </div>
-                </div>
-                <div class="metric-divider"></div>
-                <div class="metric">
-                    <div class="metric-icon">💜</div>
-                    <div class="metric-text">
-                        <span class="metric-value">Real-time</span>
-                        <span class="metric-label">Connection</span>
-                    </div>
-                </div>
-            </div>
-        </div>
-
-        <div class="hero-visual">
-            <div class="pulse-ring"></div>
-            <div class="pulse-ring delay-1"></div>
-            <div class="pulse-ring delay-2"></div>
-            <div class="heart-icon">💕</div>
-        </div>
-    </section>
-
-    <!-- How It Works Section -->
-    <section class="how-it-works" id="how-it-works">
-        <div class="section-header">
-            <span class="section-badge">The Science of Connection</span>
-            <h2>How HeartSync Works</h2>
-            <p>Three pillars of relationship technology, powered by cutting-edge biometric science.</p>
-        </div>
-
-        <div class="cards-container">
-            <div class="card" data-step="1">
-                <div class="card-glow"></div>
-                <div class="card-content">
-                    <div class="card-icon">
-                        <span>📊</span>
-                    </div>
-                    <div class="card-step">Step 01</div>
-                    <h3>Track Data</h3>
-                    <p>Monitor emotional patterns, heart rate variability, and interaction frequency. Our algorithms
-                        identify subtle shifts in relationship dynamics before you even notice them.</p>
-                    <div class="card-features">
-                        <span>💓 HRV Tracking</span>
-                        <span>📈 Mood Patterns</span>
-                        <span>⏰ Activity Logs</span>
-                    </div>
+                <h1>
+                    <span class="logo-heart">💕</span>
+                    <span class="brand-name">HeartSync</span>
+                </h1>
+                <p class="tagline">Where Psychology Meets Physiology</p>
+                <p class="description">
+                    Revolutionary technology that bridges emotional intelligence with biological rhythms.
+                    Track your heart rate variability, sync with your partner's emotional state,
+                    and build deeper connections through the science of love.
+                </p>
+                <div class="hero-cta">
+                    <a href="#features" class="btn-primary">
+                        <span>🧬</span>
+                        <span>Explore Bio-Sync</span>
+                    </a>
+                    <a href="#demo" class="btn-secondary">
+                        <span>📱</span>
+                        <span>View App Demo</span>
+                    </a>
                 </div>
             </div>
 
-            <div class="card" data-step="2">
-                <div class="card-glow"></div>
-                <div class="card-content">
-                    <div class="card-icon">
-                        <span>🧠</span>
-                    </div>
-                    <div class="card-step">Step 02</div>
-                    <h3>Analyze Mood</h3>
-                    <p>AI-powered sentiment analysis interprets emotional states from communication patterns. Understand
-                        the psychology behind every interaction with Dr. Harmony, your relationship therapist AI.</p>
-                    <div class="card-features">
-                        <span>🤖 AI Analysis</span>
-                        <span>🎭 Emotion Maps</span>
-                        <span>💡 Insights</span>
-                    </div>
-                </div>
-            </div>
+            <!-- Live Dashboard Preview -->
+            <div class="dashboard-preview" id="demo">
+                <div class="phone-frame">
+                    <div class="phone-notch"></div>
+                    <div class="phone-screen">
+                        <!-- App Header -->
+                        <header class="app-header">
+                            <div class="app-brand">
+                                <span class="app-logo">💕</span>
+                                <span class="app-name">HeartSync</span>
+                            </div>
+                            <div class="partner-indicator">
+                                <span class="partner-emojis">🦋✨</span>
+                                <span class="online-dot"></span>
+                            </div>
+                        </header>
 
-            <div class="card" data-step="3">
-                <div class="card-glow"></div>
-                <div class="card-content">
-                    <div class="card-icon">
-                        <span>💕</span>
-                    </div>
-                    <div class="card-step">Step 03</div>
-                    <h3>Sync Hearts</h3>
-                    <p>Experience true connection through synchronized activities, shared calendars, and real-time
-                        presence. Feel your partner's heartbeat through haptic feedback—even miles apart.</p>
-                    <div class="card-features">
-                        <span>📡 Live Sync</span>
-                        <span>🫀 Heartbeat</span>
-                        <span>✨ Presence</span>
-                    </div>
-                </div>
-            </div>
-        </div>
-
-        <div class="connection-line">
-            <svg viewBox="0 0 800 100" preserveAspectRatio="none">
-                <path d="M0,50 Q200,0 400,50 T800,50" stroke="url(#gradient)" fill="none" stroke-width="2"
-                    stroke-dasharray="8,8">
-                    <animate attributeName="stroke-dashoffset" from="0" to="-16" dur="1s" repeatCount="indefinite" />
-                </path>
-                <defs>
-                    <linearGradient id="gradient" x1="0%" y1="0%" x2="100%" y2="0%">
-                        <stop offset="0%" stop-color="#E84057" />
-                        <stop offset="50%" stop-color="#9B5DE5" />
-                        <stop offset="100%" stop-color="#E84057" />
-                    </linearGradient>
-                </defs>
-            </svg>
-        </div>
-    </section>
-
-    <!-- Interactive Demo Section -->
-    <section class="demo-section" id="demo">
-        <div class="section-header">
-            <span class="section-badge">Experience It Now</span>
-            <h2>Interactive App Demo</h2>
-            <p>Explore the HeartSync interface with simulated data. No signup required.</p>
-        </div>
-
-        <div class="demo-container">
-            <!-- Phone Mockup -->
-            <div class="phone-mockup">
-                <div class="phone-notch"></div>
-                <div class="phone-screen">
-                    <!-- App Header -->
-                    <div class="app-header">
-                        <div class="app-logo">
-                            <span>💕</span>
-                            <span>HeartSync</span>
+                        <!-- Bio Stats Grid -->
+                        <div class="bio-stats">
+                            <div class="bio-stat hearts" id="heartsStat">
+                                <span class="stat-icon">❤️</span>
+                                <span class="stat-number" id="heartsValue">1,247</span>
+                                <span class="stat-name">Hearts</span>
+                                <div class="stat-pulse"></div>
+                            </div>
+                            <div class="bio-stat trust">
+                                <span class="stat-icon">🛡️</span>
+                                <span class="stat-number">94</span>
+                                <span class="stat-name">Trust</span>
+                            </div>
+                            <div class="bio-stat streak">
+                                <span class="stat-icon">🔥</span>
+                                <span class="stat-number">21</span>
+                                <span class="stat-name">Streak</span>
+                            </div>
                         </div>
-                        <div class="partner-status">
-                            <span class="partner-avatar">🦋✨</span>
-                            <span class="status-dot online"></span>
-                        </div>
-                    </div>
 
-                    <!-- Stats Cards -->
-                    <div class="stats-grid">
-                        <div class="stat-card" onclick="animateHeart(this)">
-                            <span class="stat-emoji">❤️</span>
-                            <span class="stat-value" id="heartsCount">847</span>
-                            <span class="stat-label">Hearts</span>
-                            <div class="stat-tap-hint">Tap to send</div>
+                        <!-- Couple Connection -->
+                        <div class="couple-card">
+                            <div class="partner">
+                                <div class="avatar-emojis">🧚💚🌸</div>
+                                <span class="name">Precious</span>
+                                <div class="hrv-indicator">
+                                    <span class="hrv-label">HRV</span>
+                                    <span class="hrv-value good">68ms</span>
+                                </div>
+                            </div>
+                            <div class="sync-visual">
+                                <div class="heart-sync">💕</div>
+                                <div class="sync-ring"></div>
+                                <div class="sync-ring delay"></div>
+                                <span class="sync-percent">94%</span>
+                            </div>
+                            <div class="partner">
+                                <div class="avatar-emojis">🦋✨🖤</div>
+                                <span class="name">Safari</span>
+                                <div class="hrv-indicator">
+                                    <span class="hrv-label">HRV</span>
+                                    <span class="hrv-value good">72ms</span>
+                                </div>
+                            </div>
                         </div>
-                        <div class="stat-card">
-                            <span class="stat-emoji">🛡️</span>
-                            <span class="stat-value">92</span>
-                            <span class="stat-label">Trust</span>
-                        </div>
-                        <div class="stat-card">
-                            <span class="stat-emoji">🔥</span>
-                            <span class="stat-value">14</span>
-                            <span class="stat-label">Streak</span>
-                        </div>
-                    </div>
 
-                    <!-- Users Display -->
-                    <div class="users-display">
-                        <div class="user-profile">
-                            <span class="user-emojis">🧚💚🌸</span>
-                            <span class="user-name">Precious</span>
-                        </div>
-                        <div class="heart-connection">
-                            <span class="connecting-heart">💕</span>
-                            <div class="connection-pulse"></div>
-                        </div>
-                        <div class="user-profile">
-                            <span class="user-emojis">🦋✨🖤</span>
-                            <span class="user-name">Safari</span>
-                        </div>
-                    </div>
-
-                    <!-- Dr. Harmony Widget -->
-                    <div class="harmony-widget">
-                        <div class="harmony-header">
-                            <span>🌸</span>
-                            <span>Dr. Harmony</span>
-                            <span class="harmony-badge">AI Therapist</span>
-                        </div>
-                        <p class="harmony-message" id="harmonyMessage">Your connection is thriving! 14-day streak shows
-                            remarkable consistency. Consider planning a surprise date this weekend. 💕</p>
-                        <button class="harmony-btn" onclick="cycleHarmonyMessage()">Get New Insight ✨</button>
-                    </div>
-
-                    <!-- Quick Actions -->
-                    <div class="quick-actions">
-                        <button class="action-primary" onclick="showToast('Opening chat...')">💬 Chat</button>
-                        <button class="action-secondary" onclick="showToast('Dr. Harmony is thinking...')">🌸
-                            Therapy</button>
-                    </div>
-
-                    <!-- Menu Grid -->
-                    <div class="menu-grid">
-                        <button class="menu-item" onclick="showToast('Love Letters 💌')">
-                            <span>💌</span>
-                            <span>Letters</span>
-                        </button>
-                        <button class="menu-item" onclick="showToast('Flag System 🚩')">
-                            <span>🚩</span>
-                            <span>Flags</span>
-                        </button>
-                        <button class="menu-item" onclick="showToast('Memory Lane 📸')">
-                            <span>📸</span>
-                            <span>Memories</span>
-                        </button>
-                        <button class="menu-item" onclick="showToast('Calendar 📅')">
-                            <span>📅</span>
-                            <span>Calendar</span>
-                        </button>
-                        <button class="menu-item" onclick="showToast('Trust Store 🎁')">
-                            <span>🎁</span>
-                            <span>Store</span>
-                        </button>
-                        <button class="menu-item" onclick="showToast('Mini Games 🎮')">
-                            <span>🎮</span>
-                            <span>Games</span>
-                        </button>
-                        <button class="menu-item" onclick="showToast('Love Beacon 📡')">
-                            <span>📡</span>
-                            <span>Beacon</span>
-                        </button>
-                    </div>
-                </div>
-                <div class="phone-home-indicator"></div>
-            </div>
-
-            <!-- Demo Description -->
-            <div class="demo-info">
-                <h3>Feel the Connection</h3>
-                <p>This interactive mockup demonstrates HeartSync's intuitive interface. Every element is designed to
-                    strengthen emotional bonds through beautiful, intentional interactions.</p>
-
-                <div class="demo-features">
-                    <div class="demo-feature">
-                        <span class="demo-feature-icon">👆</span>
-                        <div>
-                            <strong>Tap the Hearts</strong>
-                            <p>Watch the counter animate. In the real app, this sends love to your partner instantly.
+                        <!-- Dr. Harmony AI -->
+                        <div class="harmony-card">
+                            <div class="harmony-header">
+                                <span class="harmony-icon">🌸</span>
+                                <span class="harmony-name">Dr. Harmony</span>
+                                <span class="ai-badge">AI Therapist</span>
+                            </div>
+                            <p class="harmony-insight">
+                                Your HRV patterns show remarkable coherence today.
+                                This 94% sync indicates deep emotional attunement.
+                                Consider a mindful activity together tonight. 💕
                             </p>
                         </div>
-                    </div>
-                    <div class="demo-feature">
-                        <span class="demo-feature-icon">🧠</span>
-                        <div>
-                            <strong>AI-Powered Insights</strong>
-                            <p>Dr. Harmony provides personalized relationship advice based on your patterns.</p>
+
+                        <!-- Quick Actions -->
+                        <div class="quick-actions">
+                            <button class="action chat">💬 Chat</button>
+                            <button class="action therapy">🌸 Therapy</button>
+                        </div>
+
+                        <!-- Feature Grid -->
+                        <div class="feature-grid">
+                            <div class="grid-item">
+                                <span>💌</span>
+                                <span>Letters</span>
+                            </div>
+                            <div class="grid-item">
+                                <span>🚩</span>
+                                <span>Flags</span>
+                            </div>
+                            <div class="grid-item">
+                                <span>📸</span>
+                                <span>Memories</span>
+                            </div>
+                            <div class="grid-item">
+                                <span>📅</span>
+                                <span>Calendar</span>
+                            </div>
+                            <div class="grid-item">
+                                <span>🎮</span>
+                                <span>Games</span>
+                            </div>
+                            <div class="grid-item">
+                                <span>📡</span>
+                                <span>Beacon</span>
+                            </div>
+                            <div class="grid-item">
+                                <span>🫀</span>
+                                <span>Bio-Sync</span>
+                            </div>
                         </div>
                     </div>
-                    <div class="demo-feature">
-                        <span class="demo-feature-icon">🔒</span>
-                        <div>
-                            <strong>End-to-End Encrypted</strong>
-                            <p>All messages and data are encrypted. Only you and your partner can read them.</p>
+                    <div class="home-indicator"></div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ============================================
+         FEATURES SECTION - Bio-Feedback Capabilities
+         ============================================ -->
+    <section class="features-section" id="features">
+        <div class="section-intro">
+            <span class="section-tag">Bio-Feedback Technology</span>
+            <h2>The Science of Connection</h2>
+            <p>HeartSync bridges the gap between emotional intelligence and physiological data,
+                creating unprecedented insights into relationship dynamics.</p>
+        </div>
+
+        <div class="features-showcase">
+            <!-- HRV Tracking -->
+            <div class="feature-block">
+                <div class="feature-visual">
+                    <div class="hrv-wave">
+                        <svg viewBox="0 0 200 60" preserveAspectRatio="none">
+                            <path class="wave-path" d="M0,30 Q25,10 50,30 T100,30 T150,30 T200,30"
+                                stroke="url(#hrvGradient)" fill="none" stroke-width="3">
+                                <animate attributeName="d" values="M0,30 Q25,10 50,30 T100,30 T150,30 T200,30;
+                                            M0,30 Q25,50 50,30 T100,30 T150,30 T200,30;
+                                            M0,30 Q25,10 50,30 T100,30 T150,30 T200,30" dur="2s"
+                                    repeatCount="indefinite" />
+                            </path>
+                            <defs>
+                                <linearGradient id="hrvGradient" x1="0%" y1="0%" x2="100%" y2="0%">
+                                    <stop offset="0%" stop-color="#E84057" />
+                                    <stop offset="50%" stop-color="#9B5DE5" />
+                                    <stop offset="100%" stop-color="#7DD3A8" />
+                                </linearGradient>
+                            </defs>
+                        </svg>
+                    </div>
+                    <div class="hrv-metrics">
+                        <div class="metric">
+                            <span class="metric-val">68</span>
+                            <span class="metric-unit">ms</span>
+                            <span class="metric-label">Your HRV</span>
+                        </div>
+                        <div class="metric sync-metric">
+                            <span class="metric-val">94</span>
+                            <span class="metric-unit">%</span>
+                            <span class="metric-label">Sync Rate</span>
+                        </div>
+                        <div class="metric">
+                            <span class="metric-val">72</span>
+                            <span class="metric-unit">ms</span>
+                            <span class="metric-label">Partner HRV</span>
                         </div>
                     </div>
                 </div>
+                <div class="feature-info">
+                    <div class="feature-number">01</div>
+                    <h3>Heart Rate Variability Tracking</h3>
+                    <p>Monitor your autonomic nervous system in real-time. High HRV indicates emotional
+                        resilience and relaxation, while patterns reveal stress responses and emotional states.</p>
+                    <ul class="feature-points">
+                        <li><span>🫀</span> Real-time HRV monitoring via wearables</li>
+                        <li><span>📊</span> Trend analysis over days, weeks, months</li>
+                        <li><span>🎯</span> Personalized optimal range detection</li>
+                    </ul>
+                </div>
+            </div>
 
-                <div class="tech-stack">
-                    <span class="tech-label">Built With</span>
-                    <div class="tech-badges">
-                        <span>Next.js</span>
-                        <span>TypeScript</span>
-                        <span>TweetNaCl</span>
-                        <span>WebRTC</span>
-                        <span>Framer Motion</span>
+            <!-- Emotional Sync -->
+            <div class="feature-block reverse">
+                <div class="feature-visual">
+                    <div class="sync-diagram">
+                        <div class="sync-circle you">
+                            <span>You</span>
+                            <div class="emotion-ring"></div>
+                        </div>
+                        <div class="sync-connection">
+                            <div class="connection-line"></div>
+                            <div class="connection-particles"></div>
+                            <span class="sync-label">Emotional Sync</span>
+                        </div>
+                        <div class="sync-circle partner">
+                            <span>Partner</span>
+                            <div class="emotion-ring"></div>
+                        </div>
                     </div>
+                </div>
+                <div class="feature-info">
+                    <div class="feature-number">02</div>
+                    <h3>Emotional Synchronization</h3>
+                    <p>Discover when you and your partner are emotionally aligned. Our algorithms detect
+                        synchronization patterns in heart rate, activity, and communication to reveal moments of true
+                        connection.</p>
+                    <ul class="feature-points">
+                        <li><span>💕</span> Real-time sync percentage display</li>
+                        <li><span>🧠</span> AI-detected emotional state matching</li>
+                        <li><span>📈</span> Historical sync patterns and insights</li>
+                    </ul>
+                </div>
+            </div>
+
+            <!-- AI Therapist -->
+            <div class="feature-block">
+                <div class="feature-visual">
+                    <div class="ai-chat-preview">
+                        <div class="chat-bubble ai">
+                            <span class="ai-avatar">🌸</span>
+                            <div class="bubble-content">
+                                <span class="bubble-name">Dr. Harmony</span>
+                                <p>I notice your HRV dropped when discussing finances yesterday.
+                                    Would you like some conversation starters that address this gently?</p>
+                            </div>
+                        </div>
+                        <div class="chat-bubble user">
+                            <div class="bubble-content">
+                                <p>Yes, that would help. We tend to avoid that topic.</p>
+                            </div>
+                        </div>
+                        <div class="chat-bubble ai">
+                            <span class="ai-avatar">🌸</span>
+                            <div class="bubble-content">
+                                <span class="bubble-name">Dr. Harmony</span>
+                                <p>Here's a gentle approach: "I want us to feel like a team with money..."</p>
+                            </div>
+                        </div>
+                        <div class="typing-indicator">
+                            <span></span><span></span><span></span>
+                        </div>
+                    </div>
+                </div>
+                <div class="feature-info">
+                    <div class="feature-number">03</div>
+                    <h3>AI Relationship Therapist</h3>
+                    <p>Dr. Harmony analyzes your biometric and communication patterns to provide
+                        personalized relationship insights. Like having a therapist who understands your unique
+                        dynamics.</p>
+                    <ul class="feature-points">
+                        <li><span>🤖</span> Contextual advice based on your data</li>
+                        <li><span>💡</span> Proactive suggestions at optimal times</li>
+                        <li><span>🔒</span> Private, encrypted, non-judgmental</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+
+        <!-- Additional Features Grid -->
+        <div class="extra-features">
+            <h3>Complete Connection Toolkit</h3>
+            <div class="extra-grid">
+                <div class="extra-item">
+                    <span class="extra-icon">🔐</span>
+                    <h4>E2E Encryption</h4>
+                    <p>Military-grade TweetNaCl encryption. Only you two can read your data.</p>
+                </div>
+                <div class="extra-item">
+                    <span class="extra-icon">💌</span>
+                    <h4>Love Letters</h4>
+                    <p>Write heartfelt letters that arrive with beautiful animations.</p>
+                </div>
+                <div class="extra-item">
+                    <span class="extra-icon">🚩</span>
+                    <h4>Flag System</h4>
+                    <p>Communicate feelings on a -5 to +5 scale for nuanced expression.</p>
+                </div>
+                <div class="extra-item">
+                    <span class="extra-icon">📸</span>
+                    <h4>Memory Lane</h4>
+                    <p>Photo journal of your relationship milestones.</p>
+                </div>
+                <div class="extra-item">
+                    <span class="extra-icon">🎮</span>
+                    <h4>Mini Games</h4>
+                    <p>Truth or Dare, Would You Rather, Love Quiz.</p>
+                </div>
+                <div class="extra-item">
+                    <span class="extra-icon">📡</span>
+                    <h4>Love Beacon</h4>
+                    <p>Send a quick "thinking of you" pulse.</p>
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- Features Grid -->
-    <section class="features" id="features">
-        <div class="section-header">
-            <span class="section-badge">Complete Feature Set</span>
-            <h2>Everything Your Love Needs</h2>
-            <p>A comprehensive suite of tools designed to nurture connection.</p>
-        </div>
-
-        <div class="features-grid">
-            <div class="feature-card">
-                <div class="feature-icon">🔐</div>
-                <h4>E2E Encryption</h4>
-                <p>Military-grade encryption using TweetNaCl. Not even we can read your messages.</p>
-            </div>
-            <div class="feature-card">
-                <div class="feature-icon">💬</div>
-                <h4>Real-time Chat</h4>
-                <p>Instant messaging with typing indicators, reactions, and read receipts.</p>
-            </div>
-            <div class="feature-card">
-                <div class="feature-icon">💌</div>
-                <h4>Love Letters</h4>
-                <p>Write heartfelt letters that arrive with beautiful animations.</p>
-            </div>
-            <div class="feature-card">
-                <div class="feature-icon">🚩</div>
-                <h4>Flag System</h4>
-                <p>Communicate feelings with green and red flags on a -5 to +5 scale.</p>
-            </div>
-            <div class="feature-card">
-                <div class="feature-icon">📸</div>
-                <h4>Memory Lane</h4>
-                <p>Create a beautiful timeline of your relationship milestones.</p>
-            </div>
-            <div class="feature-card">
-                <div class="feature-icon">🎮</div>
-                <h4>Mini Games</h4>
-                <p>Truth or Dare, Would You Rather, Love Quiz, and more.</p>
-            </div>
-            <div class="feature-card">
-                <div class="feature-icon">📅</div>
-                <h4>Shared Calendar</h4>
-                <p>Never miss an anniversary with countdowns and reminders.</p>
-            </div>
-            <div class="feature-card">
-                <div class="feature-icon">🌸</div>
-                <h4>Dr. Harmony AI</h4>
-                <p>AI-powered relationship insights and conversation starters.</p>
-            </div>
-        </div>
-    </section>
-
-    <!-- CTA Section -->
-    <section class="cta-section">
-        <div class="cta-content">
-            <h2>Ready to Sync Your Hearts?</h2>
-            <p>HeartSync is open source and privacy-first. Built with love for couples who value connection.</p>
-            <div class="cta-buttons">
-                <a href="https://github.com/PreciousMuriithi/HeartSync" target="_blank" class="btn-primary">
-                    <span>⭐</span>
-                    <span>View on GitHub</span>
-                </a>
-                <a href="#demo" class="btn-secondary">
-                    <span>🎮</span>
-                    <span>Try Demo Again</span>
-                </a>
-            </div>
-        </div>
-    </section>
-
-    <!-- Footer -->
-    <footer>
+    <!-- ============================================
+         COMING SOON FOOTER
+         ============================================ -->
+    <footer class="footer" id="footer">
+        <div class="footer-glow"></div>
         <div class="footer-content">
-            <div class="footer-logo">
-                <span>💕</span>
-                <span>HeartSync</span>
+            <div class="coming-soon">
+                <span class="soon-tag">Coming Soon</span>
+                <h2>Be the First to Experience HeartSync</h2>
+                <p>We're putting the finishing touches on something extraordinary.
+                    Join the waitlist to get early access when we launch.</p>
+                <div class="waitlist-form">
+                    <input type="email" placeholder="Enter your email" class="email-input" disabled>
+                    <button class="waitlist-btn" disabled>
+                        <span>Join Waitlist</span>
+                        <span>💕</span>
+                    </button>
+                </div>
+                <p class="coming-note">Launching Q2 2026 • Privacy-first • Open Source</p>
             </div>
-            <p class="footer-tagline">Where Psychology Meets Physiology</p>
+
             <div class="footer-links">
-                <a href="#how-it-works">How It Works</a>
                 <a href="#demo">Demo</a>
                 <a href="#features">Features</a>
                 <a href="https://github.com/PreciousMuriithi/HeartSync" target="_blank">GitHub</a>
             </div>
-            <p class="footer-copyright">
-                © 2026 HeartSync. Made with <span class="heart">💕</span> by Precious & Safari
-            </p>
+
+            <div class="footer-brand">
+                <span class="footer-logo">💕</span>
+                <span class="footer-name">HeartSync</span>
+            </div>
+            <p class="footer-tagline">Where Psychology Meets Physiology</p>
+
+            <p class="copyright">© 2026 HeartSync. Made with 💕 by Precious & Safari</p>
         </div>
     </footer>
 
-    <!-- Toast Notification -->
-    <div class="toast" id="toast"></div>
-
     <script>
-        // Create floating hearts
-        function createFloatingHearts() {
-            const container = document.getElementById('floatingHearts');
-            const hearts = ['💕', '❤️', '💖', '💗', '💝', '💓', '💘', '🧠', '🫀'];
+        // Create floating elements
+        (function () {
+            const container = document.getElementById('floatingElements');
+            const symbols = ['💕', '❤️', '🫀', '🧠', '🧬', '💜', '✨', '🌸'];
 
-            for (let i = 0; i < 20; i++) {
-                const heart = document.createElement('span');
-                heart.className = 'floating-heart';
-                heart.textContent = hearts[Math.floor(Math.random() * hearts.length)];
-                heart.style.left = Math.random() * 100 + '%';
-                heart.style.animationDelay = Math.random() * 20 + 's';
-                heart.style.animationDuration = 15 + Math.random() * 10 + 's';
-                heart.style.fontSize = (16 + Math.random() * 20) + 'px';
-                container.appendChild(heart);
+            for (let i = 0; i < 15; i++) {
+                const el = document.createElement('span');
+                el.className = 'float-item';
+                el.textContent = symbols[Math.floor(Math.random() * symbols.length)];
+                el.style.left = Math.random() * 100 + '%';
+                el.style.animationDelay = Math.random() * 20 + 's';
+                el.style.animationDuration = (20 + Math.random() * 15) + 's';
+                el.style.fontSize = (14 + Math.random() * 18) + 'px';
+                container.appendChild(el);
             }
-        }
-        createFloatingHearts();
+        })();
 
-        // Navbar scroll effect
-        const navbar = document.getElementById('navbar');
-        window.addEventListener('scroll', () => {
-            if (window.scrollY > 50) {
-                navbar.classList.add('scrolled');
-            } else {
-                navbar.classList.remove('scrolled');
-            }
-        });
+        // Hearts tap animation
+        document.getElementById('heartsStat').addEventListener('click', function () {
+            const val = document.getElementById('heartsValue');
+            let count = parseInt(val.textContent.replace(',', ''));
+            count++;
+            val.textContent = count.toLocaleString();
 
-        // Mobile menu toggle
-        function toggleMobileMenu() {
-            const navLinks = document.querySelector('.nav-links');
-            navLinks.classList.toggle('mobile-open');
-        }
-
-        // Heart tap animation
-        function animateHeart(element) {
-            const counter = document.getElementById('heartsCount');
-            let count = parseInt(counter.textContent);
-            count += 1;
-            counter.textContent = count;
-
-            element.classList.add('tapped');
-            setTimeout(() => element.classList.remove('tapped'), 300);
+            this.classList.add('tapped');
+            setTimeout(() => this.classList.remove('tapped'), 200);
 
             // Create floating heart
             const heart = document.createElement('span');
-            heart.className = 'tap-heart';
+            heart.className = 'float-heart';
             heart.textContent = '❤️';
-            heart.style.left = Math.random() * 60 + 20 + '%';
-            element.appendChild(heart);
+            heart.style.left = (20 + Math.random() * 60) + '%';
+            this.appendChild(heart);
             setTimeout(() => heart.remove(), 1000);
-        }
+        });
 
-        // Dr. Harmony messages
-        const harmonyMessages = [
-            "Your connection is thriving! 14-day streak shows remarkable consistency. Consider planning a surprise date this weekend. 💕",
-            "I notice increased messaging during evenings. This synchronicity suggests strong emotional alignment. Keep nurturing this rhythm! ✨",
-            "Trust score is exceptional at 92%! Your transparency and vulnerability are building an unshakeable foundation. 🛡️",
-            "Based on your patterns, a thoughtful morning message would resonate deeply with your partner today. Try it! 🌅",
-            "847 hearts exchanged! Each one represents a moment of intentional connection. Beautiful work, both of you. 💖",
-            "Your relationship shows hallmarks of secure attachment. Continue practicing active listening and validation. 🧠"
-        ];
-        let currentMessageIndex = 0;
-
-        function cycleHarmonyMessage() {
-            currentMessageIndex = (currentMessageIndex + 1) % harmonyMessages.length;
-            const messageEl = document.getElementById('harmonyMessage');
-            messageEl.style.opacity = '0';
-            setTimeout(() => {
-                messageEl.textContent = harmonyMessages[currentMessageIndex];
-                messageEl.style.opacity = '1';
-            }, 300);
-        }
-
-        // Toast notifications
-        function showToast(message) {
-            const toast = document.getElementById('toast');
-            toast.textContent = message;
-            toast.classList.add('show');
-            setTimeout(() => toast.classList.remove('show'), 2500);
-        }
-
-        // Smooth scrolling
+        // Smooth scroll
         document.querySelectorAll('a[href^="#"]').forEach(anchor => {
             anchor.addEventListener('click', function (e) {
                 e.preventDefault();
                 const target = document.querySelector(this.getAttribute('href'));
                 if (target) {
                     target.scrollIntoView({ behavior: 'smooth', block: 'start' });
-                    // Close mobile menu if open
-                    document.querySelector('.nav-links').classList.remove('mobile-open');
                 }
             });
         });
 
         // Intersection Observer for animations
-        const observerOptions = {
-            threshold: 0.1,
-            rootMargin: '0px 0px -50px 0px'
-        };
-
         const observer = new IntersectionObserver((entries) => {
             entries.forEach(entry => {
                 if (entry.isIntersecting) {
                     entry.target.classList.add('visible');
                 }
             });
-        }, observerOptions);
+        }, { threshold: 0.1 });
 
-        document.querySelectorAll('.card, .feature-card, .demo-feature').forEach(el => {
+        document.querySelectorAll('.feature-block, .extra-item').forEach(el => {
             observer.observe(el);
         });
 
-        // Console easter egg
-        console.log('%c💕 HeartSync - Where Psychology Meets Physiology 💕',
+        // Console message
+        console.log('%c💕 HeartSync - Where Psychology Meets Physiology',
             'color: #E84057; font-size: 24px; font-weight: bold;');
-        console.log('%cBuilt with love by Precious & Safari',
+        console.log('%c🧬 Bio-Feedback Technology for Couples',
             'color: #9B5DE5; font-size: 14px;');
     </script>
 </body>
