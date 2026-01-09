@@ -1,0 +1,315 @@
+// HeartSync Server - Prisma Schema
+// Made with 💕 for Precious & Safari
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+// ============================================
+// Core Models
+// ============================================
+
+model User {
+  id              String   @id @default(cuid())
+  name            String
+  nickname        String?
+  avatarEmojis    String[] @default([])
+  passwordHash    String
+  publicKey       String
+  privateKeyEncrypted String  // Encrypted with user's password
+  privateKeyNonce String
+  createdAt       DateTime @default(now())
+  updatedAt       DateTime @updatedAt
+
+  // Relations
+  couple          Couple?  @relation(fields: [coupleId], references: [id])
+  coupleId        String?
+  isUser1         Boolean  @default(false)  // True if this is user1 in the couple
+  
+  sentMessages    Message[]        @relation("SentMessages")
+  sentFlags       Flag[]           @relation("SentFlags")
+  sentLetters     LoveLetter[]     @relation("SentLetters")
+  createdMemories Memory[]         @relation("CreatedMemories")
+  purchases       TrustStorePurchase[] @relation("Purchases")
+  auditLogs       AuditLogEntry[]  @relation("AuditActor")
+  reactions       Reaction[]
+}
+
+model Couple {
+  id              String   @id @default(cuid())
+  inviteCode      String   @unique
+  hearts          Int      @default(0)
+  trustScore      Int      @default(50)
+  streak          Int      @default(0)
+  streakStartDate DateTime @default(now())
+  lastCheckIn     DateTime?
+  settings        Json     @default("{}")
+  createdAt       DateTime @default(now())
+  updatedAt       DateTime @updatedAt
+
+  // Relations
+  users           User[]
+  messages        Message[]
+  flags           Flag[]
+  letters         LoveLetter[]
+  memories        Memory[]
+  events          CalendarEvent[]
+  stickerPacks    StickerPack[]
+  purchases       TrustStorePurchase[]
+  customFlags     CustomFlag[]
+  customThemes    CustomTheme[]
+  auditLogs       AuditLogEntry[]
+  drawings        Drawing[]
+  quizQuestions   LoveQuizQuestion[]
+  gameSession     GameSession[]
+}
+
+// ============================================
+// Chat & Communication
+// ============================================
+
+model Message {
+  id              String   @id @default(cuid())
+  coupleId        String
+  senderId        String
+  contentEncrypted String
+  contentNonce    String
+  type            String   @default("text") // text, emoji, sticker, voice, image
+  replyToId       String?
+  isRead          Boolean  @default(false)
+  isDeletedBySender Boolean @default(false)
+  isDeletedForBoth Boolean @default(false)
+  createdAt       DateTime @default(now())
+  updatedAt       DateTime @updatedAt
+
+  // Relations
+  couple          Couple   @relation(fields: [coupleId], references: [id], onDelete: Cascade)
+  sender          User     @relation("SentMessages", fields: [senderId], references: [id])
+  replyTo         Message? @relation("MessageReplies", fields: [replyToId], references: [id])
+  replies         Message[] @relation("MessageReplies")
+  reactions       Reaction[]
+
+  @@index([coupleId, createdAt])
+}
+
+model Reaction {
+  id        String   @id @default(cuid())
+  messageId String
+  userId    String
+  emoji     String
+  createdAt DateTime @default(now())
+
+  message   Message  @relation(fields: [messageId], references: [id], onDelete: Cascade)
+  user      User     @relation(fields: [userId], references: [id])
+
+  @@unique([messageId, userId, emoji])
+}
+
+model Flag {
+  id              String   @id @default(cuid())
+  coupleId        String
+  senderId        String
+  intensity       Int      // -5 to +5, never 0
+  messageEncrypted String?
+  messageNonce    String?
+  customFlagId    String?
+  createdAt       DateTime @default(now())
+
+  // Relations
+  couple          Couple   @relation(fields: [coupleId], references: [id], onDelete: Cascade)
+  sender          User     @relation("SentFlags", fields: [senderId], references: [id])
+  customFlag      CustomFlag? @relation(fields: [customFlagId], references: [id])
+
+  @@index([coupleId, createdAt])
+}
+
+model CustomFlag {
+  id          String   @id @default(cuid())
+  coupleId    String
+  intensity   Int
+  name        String
+  icon        String
+  description String
+  createdAt   DateTime @default(now())
+
+  couple      Couple   @relation(fields: [coupleId], references: [id], onDelete: Cascade)
+  flags       Flag[]
+}
+
+model LoveLetter {
+  id              String   @id @default(cuid())
+  coupleId        String
+  senderId        String
+  titleEncrypted  String
+  titleNonce      String
+  contentEncrypted String
+  contentNonce    String
+  heartsRewarded  Int      @default(10)
+  isRead          Boolean  @default(false)
+  createdAt       DateTime @default(now())
+
+  couple          Couple   @relation(fields: [coupleId], references: [id], onDelete: Cascade)
+  sender          User     @relation("SentLetters", fields: [senderId], references: [id])
+
+  @@index([coupleId, createdAt])
+}
+
+// ============================================
+// Memories & Calendar
+// ============================================
+
+model Memory {
+  id              String   @id @default(cuid())
+  coupleId        String
+  createdById     String
+  photoUrl        String
+  captionEncrypted String
+  captionNonce    String
+  memoryDate      DateTime
+  tags            String[]
+  createdAt       DateTime @default(now())
+
+  couple          Couple   @relation(fields: [coupleId], references: [id], onDelete: Cascade)
+  createdBy       User     @relation("CreatedMemories", fields: [createdById], references: [id])
+
+  @@index([coupleId, memoryDate])
+}
+
+model CalendarEvent {
+  id            String   @id @default(cuid())
+  coupleId      String
+  title         String
+  description   String?
+  date          DateTime
+  isRecurring   Boolean  @default(false)
+  recurringType String?  // daily, weekly, monthly, yearly
+  isCountdown   Boolean  @default(false)
+  color         String   @default("#E84057")
+  createdAt     DateTime @default(now())
+  updatedAt     DateTime @updatedAt
+
+  couple        Couple   @relation(fields: [coupleId], references: [id], onDelete: Cascade)
+
+  @@index([coupleId, date])
+}
+
+// ============================================
+// Custom Stickers
+// ============================================
+
+model StickerPack {
+  id        String    @id @default(cuid())
+  coupleId  String
+  name      String
+  createdAt DateTime  @default(now())
+
+  couple    Couple    @relation(fields: [coupleId], references: [id], onDelete: Cascade)
+  stickers  Sticker[]
+}
+
+model Sticker {
+  id       String   @id @default(cuid())
+  packId   String
+  imageUrl String
+  name     String
+  tags     String[]
+
+  pack     StickerPack @relation(fields: [packId], references: [id], onDelete: Cascade)
+}
+
+// ============================================
+// Trust Store
+// ============================================
+
+model TrustStorePurchase {
+  id          String    @id @default(cuid())
+  coupleId    String
+  buyerId     String
+  itemId      String    // References constants.TRUST_STORE_ITEMS
+  cost        Int
+  isRedeemed  Boolean   @default(false)
+  purchasedAt DateTime  @default(now())
+  redeemedAt  DateTime?
+
+  couple      Couple    @relation(fields: [coupleId], references: [id], onDelete: Cascade)
+  buyer       User      @relation("Purchases", fields: [buyerId], references: [id])
+
+  @@index([coupleId, purchasedAt])
+}
+
+// ============================================
+// Custom Themes
+// ============================================
+
+model CustomTheme {
+  id        String   @id @default(cuid())
+  coupleId  String
+  name      String
+  isDark    Boolean
+  colors    Json     // ThemeColors object
+  createdAt DateTime @default(now())
+
+  couple    Couple   @relation(fields: [coupleId], references: [id], onDelete: Cascade)
+}
+
+// ============================================
+// Mini Games
+// ============================================
+
+model GameSession {
+  id        String   @id @default(cuid())
+  coupleId  String
+  gameType  String   // truth_or_dare, would_you_rather, love_quiz, drawing
+  state     Json     // Game-specific state
+  isActive  Boolean  @default(true)
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+
+  couple    Couple   @relation(fields: [coupleId], references: [id], onDelete: Cascade)
+}
+
+model LoveQuizQuestion {
+  id          String   @id @default(cuid())
+  coupleId    String
+  question    String
+  category    String   // memories, preferences, dreams, history
+  answerEncrypted String
+  answerNonce String
+  aboutUserId String
+  createdAt   DateTime @default(now())
+
+  couple      Couple   @relation(fields: [coupleId], references: [id], onDelete: Cascade)
+}
+
+model Drawing {
+  id        String   @id @default(cuid())
+  coupleId  String
+  title     String
+  data      Json     // Canvas data
+  createdAt DateTime @default(now())
+
+  couple    Couple   @relation(fields: [coupleId], references: [id], onDelete: Cascade)
+}
+
+// ============================================
+// Audit Log
+// ============================================
+
+model AuditLogEntry {
+  id        String   @id @default(cuid())
+  coupleId  String
+  actorId   String
+  action    String   // flag_sent, letter_sent, etc.
+  details   String
+  createdAt DateTime @default(now())
+
+  couple    Couple   @relation(fields: [coupleId], references: [id], onDelete: Cascade)
+  actor     User     @relation("AuditActor", fields: [actorId], references: [id])
+
+  @@index([coupleId, createdAt])
+}

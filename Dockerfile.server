@@ -1,0 +1,44 @@
+# HeartSync Server Dockerfile
+FROM node:20-alpine AS base
+
+# Install pnpm
+RUN corepack enable && corepack prepare pnpm@9.0.0 --activate
+
+WORKDIR /app
+
+# Copy package files
+COPY package.json pnpm-workspace.yaml pnpm-lock.yaml* ./
+COPY packages/shared/package.json ./packages/shared/
+COPY packages/crypto/package.json ./packages/crypto/
+COPY apps/server/package.json ./apps/server/
+
+# Install dependencies
+RUN pnpm install --frozen-lockfile
+
+# Copy source
+COPY packages/shared ./packages/shared
+COPY packages/crypto ./packages/crypto
+COPY apps/server ./apps/server
+
+# Generate Prisma client
+RUN pnpm --filter @heartsync/server db:generate
+
+# Build
+RUN pnpm --filter @heartsync/server build
+
+# Production stage
+FROM node:20-alpine AS production
+
+RUN corepack enable && corepack prepare pnpm@9.0.0 --activate
+
+WORKDIR /app
+
+COPY --from=base /app/package.json ./
+COPY --from=base /app/pnpm-workspace.yaml ./
+COPY --from=base /app/node_modules ./node_modules
+COPY --from=base /app/packages ./packages
+COPY --from=base /app/apps/server ./apps/server
+
+EXPOSE 3001
+
+CMD ["pnpm", "--filter", "@heartsync/server", "start"]

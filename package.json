@@ -1,0 +1,29 @@
+{
+  "name": "heartsync",
+  "version": "2.0.0",
+  "private": true,
+  "description": "HeartSync 2.0 - The ultimate couples app for Precious & Safari 💕",
+  "workspaces": [
+    "apps/*",
+    "packages/*"
+  ],
+  "scripts": {
+    "dev": "turbo run dev",
+    "build": "turbo run build",
+    "test": "turbo run test",
+    "lint": "turbo run lint",
+    "clean": "turbo run clean && rm -rf node_modules",
+    "db:push": "pnpm --filter @heartsync/server db:push",
+    "db:studio": "pnpm --filter @heartsync/server db:studio",
+    "docker:up": "docker-compose up -d",
+    "docker:down": "docker-compose down"
+  },
+  "devDependencies": {
+    "turbo": "^2.3.0",
+    "typescript": "^5.3.0"
+  },
+  "packageManager": "pnpm@9.0.0",
+  "engines": {
+    "node": ">=20.0.0"
+  }
+}

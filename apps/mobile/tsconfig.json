@@ -1,0 +1,20 @@
+{
+    "extends": "expo/tsconfig.base",
+    "compilerOptions": {
+        "strict": true,
+        "paths": {
+            "@heartsync/shared": [
+                "../../packages/shared/src"
+            ],
+            "@heartsync/crypto": [
+                "../../packages/crypto/src"
+            ]
+        }
+    },
+    "include": [
+        "**/*.ts",
+        "**/*.tsx",
+        ".expo/types/**/*.ts",
+        "expo-env.d.ts"
+    ]
+}
