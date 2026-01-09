@@ -1,807 +1,31 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="HeartSync - Your private couples sanctuary. End-to-end encrypted chat, love letters, memory lane, and more. Made with love for couples who value privacy.">
+    <meta name="description"
+        content="HeartSync - Where Psychology Meets Physiology. A revolutionary couples app that connects emotional intelligence with biological rhythms for deeper relationships.">
+    <meta name="keywords"
+        content="couples app, relationship, psychology, physiology, heart rate, mood tracking, love, connection">
+    <meta name="author" content="Precious & Safari">
     <meta name="theme-color" content="#0A0A0C">
-    <meta name="apple-mobile-web-app-capable" content="yes">
-    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
-    <title>HeartSync 💕 - Your Private Couples Sanctuary</title>
-    
+
+    <title>HeartSync | Where Psychology Meets Physiology 💕</title>
+
     <!-- Favicon -->
-    <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>💕</text></svg>">
-    
+    <link rel="icon"
+        href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>💕</text></svg>">
+
     <!-- Google Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
-    
-    <style>
-        /* ============================================
-           CSS Custom Properties - Dark Romantic Theme
-           ============================================ */
-        :root {
-            --color-background: #0A0A0C;
-            --color-background-secondary: #121215;
-            --color-surface: #1A1A1F;
-            --color-surface-hover: #252529;
-            --color-primary: #E84057;
-            --color-primary-hover: #FF5C72;
-            --color-secondary: #9B5DE5;
-            --color-accent: #FF85A2;
-            --color-text: #FAFAFA;
-            --color-text-secondary: #B8B8BC;
-            --color-text-muted: #6B6B70;
-            --color-success: #7DD3A8;
-            --color-hearts: #E84057;
-            --color-trust: #9B5DE5;
-            --color-streak: #FF9F43;
-            --font-inter: 'Inter', system-ui, -apple-system, sans-serif;
-        }
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap"
+        rel="stylesheet">
 
-        /* ============================================
-           Base Styles
-           ============================================ */
-        * {
-            box-sizing: border-box;
-            margin: 0;
-            padding: 0;
-        }
-
-        html {
-            scroll-behavior: smooth;
-        }
-
-        body {
-            font-family: var(--font-inter);
-            background: var(--color-background);
-            color: var(--color-text);
-            line-height: 1.6;
-            -webkit-font-smoothing: antialiased;
-            -moz-osx-font-smoothing: grayscale;
-            overflow-x: hidden;
-        }
-
-        /* ============================================
-           Background Animation
-           ============================================ */
-        .bg-gradient {
-            position: fixed;
-            top: 0;
-            left: 0;
-            right: 0;
-            bottom: 0;
-            background: 
-                radial-gradient(ellipse at 20% 20%, rgba(232, 64, 87, 0.15) 0%, transparent 50%),
-                radial-gradient(ellipse at 80% 80%, rgba(155, 93, 229, 0.15) 0%, transparent 50%),
-                radial-gradient(ellipse at 50% 50%, rgba(255, 133, 162, 0.05) 0%, transparent 70%);
-            z-index: -1;
-            animation: gradientShift 15s ease-in-out infinite;
-        }
-
-        @keyframes gradientShift {
-            0%, 100% { 
-                background: 
-                    radial-gradient(ellipse at 20% 20%, rgba(232, 64, 87, 0.15) 0%, transparent 50%),
-                    radial-gradient(ellipse at 80% 80%, rgba(155, 93, 229, 0.15) 0%, transparent 50%),
-                    radial-gradient(ellipse at 50% 50%, rgba(255, 133, 162, 0.05) 0%, transparent 70%);
-            }
-            50% { 
-                background: 
-                    radial-gradient(ellipse at 80% 20%, rgba(232, 64, 87, 0.15) 0%, transparent 50%),
-                    radial-gradient(ellipse at 20% 80%, rgba(155, 93, 229, 0.15) 0%, transparent 50%),
-                    radial-gradient(ellipse at 50% 50%, rgba(255, 133, 162, 0.08) 0%, transparent 70%);
-            }
-        }
-
-        /* Floating Hearts Background */
-        .floating-hearts {
-            position: fixed;
-            top: 0;
-            left: 0;
-            right: 0;
-            bottom: 0;
-            pointer-events: none;
-            z-index: -1;
-            overflow: hidden;
-        }
-
-        .floating-heart {
-            position: absolute;
-            font-size: 24px;
-            opacity: 0.1;
-            animation: floatUp 20s linear infinite;
-        }
-
-        @keyframes floatUp {
-            0% {
-                transform: translateY(100vh) rotate(0deg);
-                opacity: 0;
-            }
-            10% {
-                opacity: 0.1;
-            }
-            90% {
-                opacity: 0.1;
-            }
-            100% {
-                transform: translateY(-100vh) rotate(720deg);
-                opacity: 0;
-            }
-        }
-
-        /* ============================================
-           Navigation
-           ============================================ */
-        nav {
-            position: fixed;
-            top: 0;
-            left: 0;
-            right: 0;
-            z-index: 100;
-            padding: 1rem 2rem;
-            background: rgba(10, 10, 12, 0.8);
-            backdrop-filter: blur(20px);
-            border-bottom: 1px solid rgba(255, 255, 255, 0.05);
-            transition: all 0.3s ease;
-        }
-
-        nav.scrolled {
-            padding: 0.75rem 2rem;
-            box-shadow: 0 10px 40px rgba(0, 0, 0, 0.3);
-        }
-
-        .nav-container {
-            max-width: 1200px;
-            margin: 0 auto;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-        }
-
-        .logo {
-            display: flex;
-            align-items: center;
-            gap: 0.5rem;
-            font-size: 1.5rem;
-            font-weight: 700;
-            color: var(--color-text);
-            text-decoration: none;
-        }
-
-        .logo-emoji {
-            font-size: 2rem;
-            animation: heartbeat 2s infinite;
-        }
-
-        @keyframes heartbeat {
-            0%, 100% { transform: scale(1); }
-            14% { transform: scale(1.1); }
-            28% { transform: scale(1); }
-            42% { transform: scale(1.1); }
-            56% { transform: scale(1); }
-        }
-
-        .nav-links {
-            display: flex;
-            gap: 2rem;
-            align-items: center;
-        }
-
-        .nav-links a {
-            color: var(--color-text-secondary);
-            text-decoration: none;
-            font-weight: 500;
-            transition: color 0.3s ease;
-        }
-
-        .nav-links a:hover {
-            color: var(--color-primary);
-        }
-
-        .btn-nav {
-            padding: 0.75rem 1.5rem;
-            background: var(--color-primary);
-            color: white;
-            border: none;
-            border-radius: 12px;
-            font-weight: 600;
-            cursor: pointer;
-            transition: all 0.3s ease;
-            text-decoration: none;
-        }
-
-        .btn-nav:hover {
-            background: var(--color-primary-hover);
-            transform: translateY(-2px);
-            box-shadow: 0 10px 30px rgba(232, 64, 87, 0.3);
-        }
-
-        /* Mobile menu */
-        .mobile-menu-btn {
-            display: none;
-            background: none;
-            border: none;
-            color: var(--color-text);
-            font-size: 1.5rem;
-            cursor: pointer;
-        }
-
-        /* ============================================
-           Hero Section
-           ============================================ */
-        .hero {
-            min-height: 100vh;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            padding: 8rem 2rem 4rem;
-            text-align: center;
-        }
-
-        .hero-content {
-            max-width: 800px;
-            animation: fadeInUp 1s ease-out;
-        }
-
-        @keyframes fadeInUp {
-            from {
-                opacity: 0;
-                transform: translateY(40px);
-            }
-            to {
-                opacity: 1;
-                transform: translateY(0);
-            }
-        }
-
-        .hero-badge {
-            display: inline-flex;
-            align-items: center;
-            gap: 0.5rem;
-            padding: 0.5rem 1rem;
-            background: rgba(232, 64, 87, 0.15);
-            border: 1px solid rgba(232, 64, 87, 0.3);
-            border-radius: 50px;
-            font-size: 0.875rem;
-            font-weight: 500;
-            color: var(--color-accent);
-            margin-bottom: 2rem;
-        }
-
-        .hero-badge-dot {
-            width: 8px;
-            height: 8px;
-            background: var(--color-success);
-            border-radius: 50%;
-            animation: pulse 2s infinite;
-        }
-
-        @keyframes pulse {
-            0%, 100% { opacity: 1; }
-            50% { opacity: 0.5; }
-        }
-
-        .hero h1 {
-            font-size: clamp(2.5rem, 7vw, 4.5rem);
-            font-weight: 800;
-            line-height: 1.1;
-            margin-bottom: 1.5rem;
-            background: linear-gradient(135deg, var(--color-text) 0%, var(--color-accent) 50%, var(--color-secondary) 100%);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            background-clip: text;
-        }
-
-        .hero p {
-            font-size: clamp(1rem, 2.5vw, 1.25rem);
-            color: var(--color-text-secondary);
-            max-width: 600px;
-            margin: 0 auto 2.5rem;
-            line-height: 1.8;
-        }
-
-        .hero-buttons {
-            display: flex;
-            gap: 1rem;
-            justify-content: center;
-            flex-wrap: wrap;
-        }
-
-        .btn-primary {
-            display: inline-flex;
-            align-items: center;
-            gap: 0.5rem;
-            padding: 1rem 2rem;
-            background: linear-gradient(135deg, var(--color-primary) 0%, var(--color-primary-hover) 100%);
-            color: white;
-            border: none;
-            border-radius: 16px;
-            font-size: 1rem;
-            font-weight: 600;
-            cursor: pointer;
-            transition: all 0.3s ease;
-            text-decoration: none;
-        }
-
-        .btn-primary:hover {
-            transform: translateY(-3px);
-            box-shadow: 0 20px 40px rgba(232, 64, 87, 0.4);
-        }
-
-        .btn-secondary {
-            display: inline-flex;
-            align-items: center;
-            gap: 0.5rem;
-            padding: 1rem 2rem;
-            background: var(--color-surface);
-            color: var(--color-text);
-            border: 1px solid rgba(255, 255, 255, 0.1);
-            border-radius: 16px;
-            font-size: 1rem;
-            font-weight: 600;
-            cursor: pointer;
-            transition: all 0.3s ease;
-            text-decoration: none;
-        }
-
-        .btn-secondary:hover {
-            background: var(--color-surface-hover);
-            transform: translateY(-3px);
-            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
-        }
-
-        .hero-stats {
-            display: flex;
-            justify-content: center;
-            gap: 3rem;
-            margin-top: 4rem;
-            padding-top: 3rem;
-            border-top: 1px solid rgba(255, 255, 255, 0.05);
-        }
-
-        .hero-stat {
-            text-align: center;
-        }
-
-        .hero-stat-value {
-            font-size: 2rem;
-            font-weight: 700;
-            color: var(--color-accent);
-        }
-
-        .hero-stat-label {
-            font-size: 0.875rem;
-            color: var(--color-text-muted);
-            margin-top: 0.25rem;
-        }
-
-        /* ============================================
-           Features Section
-           ============================================ */
-        .features {
-            padding: 6rem 2rem;
-            background: linear-gradient(180deg, transparent 0%, rgba(26, 26, 31, 0.5) 100%);
-        }
-
-        .section-title {
-            text-align: center;
-            margin-bottom: 4rem;
-        }
-
-        .section-title h2 {
-            font-size: clamp(2rem, 5vw, 3rem);
-            font-weight: 700;
-            margin-bottom: 1rem;
-            color: var(--color-text);
-        }
-
-        .section-title p {
-            font-size: 1.125rem;
-            color: var(--color-text-secondary);
-            max-width: 600px;
-            margin: 0 auto;
-        }
-
-        .features-grid {
-            max-width: 1200px;
-            margin: 0 auto;
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 2rem;
-        }
-
-        .feature-card {
-            background: rgba(26, 26, 31, 0.8);
-            backdrop-filter: blur(20px);
-            border: 1px solid rgba(255, 255, 255, 0.05);
-            border-radius: 24px;
-            padding: 2rem;
-            transition: all 0.4s ease;
-            position: relative;
-            overflow: hidden;
-        }
-
-        .feature-card::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            right: 0;
-            height: 3px;
-            background: linear-gradient(90deg, var(--color-primary), var(--color-secondary));
-            opacity: 0;
-            transition: opacity 0.3s ease;
-        }
-
-        .feature-card:hover {
-            transform: translateY(-8px);
-            border-color: rgba(232, 64, 87, 0.3);
-            box-shadow: 0 25px 50px rgba(0, 0, 0, 0.4);
-        }
-
-        .feature-card:hover::before {
-            opacity: 1;
-        }
-
-        .feature-icon {
-            width: 60px;
-            height: 60px;
-            background: linear-gradient(135deg, rgba(232, 64, 87, 0.2) 0%, rgba(155, 93, 229, 0.2) 100%);
-            border-radius: 16px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-size: 1.75rem;
-            margin-bottom: 1.5rem;
-        }
-
-        .feature-card h3 {
-            font-size: 1.25rem;
-            font-weight: 600;
-            margin-bottom: 0.75rem;
-            color: var(--color-text);
-        }
-
-        .feature-card p {
-            font-size: 0.95rem;
-            color: var(--color-text-secondary);
-            line-height: 1.7;
-        }
-
-        /* ============================================
-           How It Works Section
-           ============================================ */
-        .how-it-works {
-            padding: 6rem 2rem;
-        }
-
-        .steps {
-            max-width: 900px;
-            margin: 0 auto;
-            display: flex;
-            flex-direction: column;
-            gap: 3rem;
-        }
-
-        .step {
-            display: flex;
-            gap: 2rem;
-            align-items: flex-start;
-            animation: slideIn 0.6s ease-out;
-        }
-
-        .step:nth-child(even) {
-            flex-direction: row-reverse;
-        }
-
-        @keyframes slideIn {
-            from {
-                opacity: 0;
-                transform: translateX(-30px);
-            }
-            to {
-                opacity: 1;
-                transform: translateX(0);
-            }
-        }
-
-        .step-number {
-            flex-shrink: 0;
-            width: 60px;
-            height: 60px;
-            background: linear-gradient(135deg, var(--color-primary) 0%, var(--color-secondary) 100%);
-            border-radius: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-size: 1.5rem;
-            font-weight: 700;
-            color: white;
-        }
-
-        .step-content {
-            flex: 1;
-            padding: 0.5rem 0;
-        }
-
-        .step-content h3 {
-            font-size: 1.5rem;
-            font-weight: 600;
-            margin-bottom: 0.75rem;
-            color: var(--color-text);
-        }
-
-        .step-content p {
-            font-size: 1rem;
-            color: var(--color-text-secondary);
-            line-height: 1.7;
-        }
-
-        /* ============================================
-           Privacy Section
-           ============================================ */
-        .privacy {
-            padding: 6rem 2rem;
-            background: linear-gradient(180deg, transparent 0%, rgba(155, 93, 229, 0.05) 50%, transparent 100%);
-        }
-
-        .privacy-content {
-            max-width: 1000px;
-            margin: 0 auto;
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 4rem;
-            align-items: center;
-        }
-
-        .privacy-text h2 {
-            font-size: clamp(2rem, 4vw, 2.5rem);
-            font-weight: 700;
-            margin-bottom: 1.5rem;
-            color: var(--color-text);
-        }
-
-        .privacy-text p {
-            font-size: 1.1rem;
-            color: var(--color-text-secondary);
-            line-height: 1.8;
-            margin-bottom: 2rem;
-        }
-
-        .privacy-features {
-            display: flex;
-            flex-direction: column;
-            gap: 1rem;
-        }
-
-        .privacy-feature {
-            display: flex;
-            align-items: center;
-            gap: 0.75rem;
-            font-size: 1rem;
-            color: var(--color-text-secondary);
-        }
-
-        .privacy-feature-icon {
-            width: 24px;
-            height: 24px;
-            background: rgba(125, 211, 168, 0.2);
-            border-radius: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            color: var(--color-success);
-            font-size: 0.75rem;
-        }
-
-        .privacy-visual {
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            position: relative;
-        }
-
-        .lock-icon {
-            font-size: 8rem;
-            animation: float 4s ease-in-out infinite;
-        }
-
-        @keyframes float {
-            0%, 100% { transform: translateY(0); }
-            50% { transform: translateY(-15px); }
-        }
-
-        .shield-ring {
-            position: absolute;
-            width: 200px;
-            height: 200px;
-            border: 2px solid rgba(155, 93, 229, 0.3);
-            border-radius: 50%;
-            animation: ripple 3s ease-out infinite;
-        }
-
-        .shield-ring:nth-child(2) {
-            animation-delay: 1s;
-        }
-
-        .shield-ring:nth-child(3) {
-            animation-delay: 2s;
-        }
-
-        @keyframes ripple {
-            0% {
-                transform: scale(0.8);
-                opacity: 1;
-            }
-            100% {
-                transform: scale(1.5);
-                opacity: 0;
-            }
-        }
-
-        /* ============================================
-           CTA Section
-           ============================================ */
-        .cta {
-            padding: 6rem 2rem;
-            text-align: center;
-        }
-
-        .cta-box {
-            max-width: 800px;
-            margin: 0 auto;
-            padding: 4rem;
-            background: linear-gradient(135deg, rgba(232, 64, 87, 0.15) 0%, rgba(155, 93, 229, 0.15) 100%);
-            border: 1px solid rgba(232, 64, 87, 0.3);
-            border-radius: 32px;
-            position: relative;
-            overflow: hidden;
-        }
-
-        .cta-box::before {
-            content: '';
-            position: absolute;
-            top: -50%;
-            left: -50%;
-            width: 200%;
-            height: 200%;
-            background: conic-gradient(from 0deg, transparent, rgba(232, 64, 87, 0.1), transparent 30%);
-            animation: rotate 20s linear infinite;
-        }
-
-        @keyframes rotate {
-            100% { transform: rotate(360deg); }
-        }
-
-        .cta-content {
-            position: relative;
-            z-index: 1;
-        }
-
-        .cta h2 {
-            font-size: clamp(2rem, 4vw, 2.5rem);
-            font-weight: 700;
-            margin-bottom: 1rem;
-            color: var(--color-text);
-        }
-
-        .cta p {
-            font-size: 1.125rem;
-            color: var(--color-text-secondary);
-            margin-bottom: 2rem;
-            max-width: 500px;
-            margin-left: auto;
-            margin-right: auto;
-        }
-
-        /* ============================================
-           Footer
-           ============================================ */
-        footer {
-            padding: 4rem 2rem 2rem;
-            border-top: 1px solid rgba(255, 255, 255, 0.05);
-            text-align: center;
-        }
-
-        .footer-logo {
-            font-size: 2rem;
-            margin-bottom: 1.5rem;
-        }
-
-        .footer-links {
-            display: flex;
-            justify-content: center;
-            gap: 2rem;
-            margin-bottom: 2rem;
-            flex-wrap: wrap;
-        }
-
-        .footer-links a {
-            color: var(--color-text-muted);
-            text-decoration: none;
-            font-size: 0.9rem;
-            transition: color 0.3s ease;
-        }
-
-        .footer-links a:hover {
-            color: var(--color-primary);
-        }
-
-        .footer-copyright {
-            color: var(--color-text-muted);
-            font-size: 0.875rem;
-        }
-
-        .footer-copyright span {
-            color: var(--color-accent);
-        }
-
-        /* ============================================
-           Responsive Styles
-           ============================================ */
-        @media (max-width: 768px) {
-            .nav-links {
-                display: none;
-            }
-
-            .mobile-menu-btn {
-                display: block;
-            }
-
-            .hero {
-                padding: 6rem 1.5rem 3rem;
-            }
-
-            .hero-stats {
-                flex-direction: column;
-                gap: 1.5rem;
-            }
-
-            .privacy-content {
-                grid-template-columns: 1fr;
-                gap: 2rem;
-            }
-
-            .privacy-visual {
-                order: -1;
-            }
-
-            .step, .step:nth-child(even) {
-                flex-direction: column;
-                text-align: center;
-                gap: 1rem;
-            }
-
-            .step-number {
-                align-self: center;
-            }
-
-            .cta-box {
-                padding: 2.5rem 1.5rem;
-            }
-
-            .features-grid {
-                grid-template-columns: 1fr;
-            }
-        }
-
-        /* ============================================
-           Scroll Animations
-           ============================================ */
-        .reveal {
-            opacity: 0;
-            transform: translateY(30px);
-            transition: all 0.8s ease;
-        }
-
-        .reveal.active {
-            opacity: 1;
-            transform: translateY(0);
-        }
-    </style>
+    <link rel="stylesheet" href="styles.css">
 </head>
+
 <body>
     <!-- Animated Background -->
     <div class="bg-gradient"></div>
@@ -815,12 +39,12 @@
                 <span>HeartSync</span>
             </a>
             <div class="nav-links">
-                <a href="#features">Features</a>
                 <a href="#how-it-works">How It Works</a>
-                <a href="#privacy">Privacy</a>
-                <a href="#cta" class="btn-nav">Get Started</a>
+                <a href="#demo">Live Demo</a>
+                <a href="#features">Features</a>
+                <a href="#demo" class="btn-nav">Try Demo</a>
             </div>
-            <button class="mobile-menu-btn" aria-label="Menu">☰</button>
+            <button class="mobile-menu-btn" aria-label="Menu" onclick="toggleMobileMenu()">☰</button>
         </div>
     </nav>
 
@@ -829,171 +53,368 @@
         <div class="hero-content">
             <div class="hero-badge">
                 <span class="hero-badge-dot"></span>
-                <span>Made with love for couples</span>
+                <span>Psychology × Physiology</span>
             </div>
-            <h1>Your Private Couples Sanctuary</h1>
-            <p>End-to-end encrypted messaging, love letters, memory lane, and interactive games. 
-               Everything you need to nurture your relationship, wrapped in absolute privacy.</p>
+            <h1>
+                <span class="gradient-text">HeartSync</span>
+            </h1>
+            <p class="hero-tagline">Where Psychology Meets Physiology</p>
+            <p class="hero-description">
+                Revolutionary couples technology that bridges emotional intelligence with biological rhythms.
+                Track moods, sync heartbeats, and build deeper connections through the science of love.
+            </p>
             <div class="hero-buttons">
-                <a href="#cta" class="btn-primary">
-                    <span>💕</span>
-                    <span>Start Your Journey</span>
-                </a>
-                <a href="#features" class="btn-secondary">
+                <a href="#demo" class="btn-primary">
                     <span>✨</span>
-                    <span>Explore Features</span>
+                    <span>Experience Demo</span>
+                </a>
+                <a href="#how-it-works" class="btn-secondary">
+                    <span>🧠</span>
+                    <span>Learn the Science</span>
                 </a>
             </div>
-            <div class="hero-stats">
-                <div class="hero-stat">
-                    <div class="hero-stat-value">🔐</div>
-                    <div class="hero-stat-label">E2E Encrypted</div>
-                </div>
-                <div class="hero-stat">
-                    <div class="hero-stat-value">💌</div>
-                    <div class="hero-stat-label">Love Letters</div>
-                </div>
-                <div class="hero-stat">
-                    <div class="hero-stat-value">🎮</div>
-                    <div class="hero-stat-label">Mini Games</div>
-                </div>
-            </div>
-        </div>
-    </section>
 
-    <!-- Features Section -->
-    <section class="features" id="features">
-        <div class="section-title reveal">
-            <h2>Everything Your Love Needs</h2>
-            <p>Powerful features designed to bring you closer, wrapped in a beautiful experience.</p>
+            <div class="hero-metrics">
+                <div class="metric">
+                    <div class="metric-icon">🧬</div>
+                    <div class="metric-text">
+                        <span class="metric-value">Bio-Sync</span>
+                        <span class="metric-label">Technology</span>
+                    </div>
+                </div>
+                <div class="metric-divider"></div>
+                <div class="metric">
+                    <div class="metric-icon">🔐</div>
+                    <div class="metric-text">
+                        <span class="metric-value">E2E</span>
+                        <span class="metric-label">Encrypted</span>
+                    </div>
+                </div>
+                <div class="metric-divider"></div>
+                <div class="metric">
+                    <div class="metric-icon">💜</div>
+                    <div class="metric-text">
+                        <span class="metric-value">Real-time</span>
+                        <span class="metric-label">Connection</span>
+                    </div>
+                </div>
+            </div>
         </div>
-        <div class="features-grid">
-            <div class="feature-card reveal">
-                <div class="feature-icon">🔐</div>
-                <h3>End-to-End Encryption</h3>
-                <p>Your messages, photos, and moments are encrypted so only you and your partner can read them. Not even we can see your conversations.</p>
-            </div>
-            <div class="feature-card reveal">
-                <div class="feature-icon">💬</div>
-                <h3>Real-time Chat</h3>
-                <p>Instant messaging with read receipts, typing indicators, reactions, and emoji support. Stay connected no matter the distance.</p>
-            </div>
-            <div class="feature-card reveal">
-                <div class="feature-icon">💌</div>
-                <h3>Love Letters</h3>
-                <p>Write heartfelt letters that your partner can open anytime. Create time-capsule letters for special occasions.</p>
-            </div>
-            <div class="feature-card reveal">
-                <div class="feature-icon">📸</div>
-                <h3>Memory Lane</h3>
-                <p>Create a beautiful photo journal of your journey together. Relive your favorite memories with photos and notes.</p>
-            </div>
-            <div class="feature-card reveal">
-                <div class="feature-icon">🎮</div>
-                <h3>Mini Games</h3>
-                <p>Play Truth or Dare, Would You Rather, Love Quiz, and Drawing games together. Fun ways to learn more about each other.</p>
-            </div>
-            <div class="feature-card reveal">
-                <div class="feature-icon">📅</div>
-                <h3>Shared Calendar</h3>
-                <p>Never miss an anniversary or date night. Sync your important dates and set countdowns for special moments.</p>
-            </div>
-            <div class="feature-card reveal">
-                <div class="feature-icon">🚩</div>
-                <h3>Flag System</h3>
-                <p>Communicate your feelings with green and red flags. A gentle way to share what's on your mind.</p>
-            </div>
-            <div class="feature-card reveal">
-                <div class="feature-icon">🌸</div>
-                <h3>Dr. Harmony AI</h3>
-                <p>Get gentle relationship insights and conversation starters powered by AI. Always supportive, never judgmental.</p>
-            </div>
-            <div class="feature-card reveal">
-                <div class="feature-icon">📡</div>
-                <h3>Love Beacon</h3>
-                <p>Send a quick "thinking of you" signal when words aren't enough. Let your partner know you care.</p>
-            </div>
+
+        <div class="hero-visual">
+            <div class="pulse-ring"></div>
+            <div class="pulse-ring delay-1"></div>
+            <div class="pulse-ring delay-2"></div>
+            <div class="heart-icon">💕</div>
         </div>
     </section>
 
     <!-- How It Works Section -->
     <section class="how-it-works" id="how-it-works">
-        <div class="section-title reveal">
-            <h2>Simple to Start</h2>
-            <p>Get connected with your partner in just a few steps.</p>
+        <div class="section-header">
+            <span class="section-badge">The Science of Connection</span>
+            <h2>How HeartSync Works</h2>
+            <p>Three pillars of relationship technology, powered by cutting-edge biometric science.</p>
         </div>
-        <div class="steps">
-            <div class="step reveal">
-                <div class="step-number">1</div>
-                <div class="step-content">
-                    <h3>Create Your Account</h3>
-                    <p>Sign up with just an email. Choose your avatar emojis and set up your profile. It takes less than a minute.</p>
+
+        <div class="cards-container">
+            <div class="card" data-step="1">
+                <div class="card-glow"></div>
+                <div class="card-content">
+                    <div class="card-icon">
+                        <span>📊</span>
+                    </div>
+                    <div class="card-step">Step 01</div>
+                    <h3>Track Data</h3>
+                    <p>Monitor emotional patterns, heart rate variability, and interaction frequency. Our algorithms
+                        identify subtle shifts in relationship dynamics before you even notice them.</p>
+                    <div class="card-features">
+                        <span>💓 HRV Tracking</span>
+                        <span>📈 Mood Patterns</span>
+                        <span>⏰ Activity Logs</span>
+                    </div>
                 </div>
             </div>
-            <div class="step reveal">
-                <div class="step-number">2</div>
-                <div class="step-content">
-                    <h3>Invite Your Partner</h3>
-                    <p>Send a magic invite link to your partner. Once they join, you're automatically connected in your private space.</p>
+
+            <div class="card" data-step="2">
+                <div class="card-glow"></div>
+                <div class="card-content">
+                    <div class="card-icon">
+                        <span>🧠</span>
+                    </div>
+                    <div class="card-step">Step 02</div>
+                    <h3>Analyze Mood</h3>
+                    <p>AI-powered sentiment analysis interprets emotional states from communication patterns. Understand
+                        the psychology behind every interaction with Dr. Harmony, your relationship therapist AI.</p>
+                    <div class="card-features">
+                        <span>🤖 AI Analysis</span>
+                        <span>🎭 Emotion Maps</span>
+                        <span>💡 Insights</span>
+                    </div>
                 </div>
             </div>
-            <div class="step reveal">
-                <div class="step-number">3</div>
-                <div class="step-content">
-                    <h3>Start Your Journey</h3>
-                    <p>Chat, share photos, write love letters, play games, and build your love story together—all encrypted and private.</p>
+
+            <div class="card" data-step="3">
+                <div class="card-glow"></div>
+                <div class="card-content">
+                    <div class="card-icon">
+                        <span>💕</span>
+                    </div>
+                    <div class="card-step">Step 03</div>
+                    <h3>Sync Hearts</h3>
+                    <p>Experience true connection through synchronized activities, shared calendars, and real-time
+                        presence. Feel your partner's heartbeat through haptic feedback—even miles apart.</p>
+                    <div class="card-features">
+                        <span>📡 Live Sync</span>
+                        <span>🫀 Heartbeat</span>
+                        <span>✨ Presence</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="connection-line">
+            <svg viewBox="0 0 800 100" preserveAspectRatio="none">
+                <path d="M0,50 Q200,0 400,50 T800,50" stroke="url(#gradient)" fill="none" stroke-width="2"
+                    stroke-dasharray="8,8">
+                    <animate attributeName="stroke-dashoffset" from="0" to="-16" dur="1s" repeatCount="indefinite" />
+                </path>
+                <defs>
+                    <linearGradient id="gradient" x1="0%" y1="0%" x2="100%" y2="0%">
+                        <stop offset="0%" stop-color="#E84057" />
+                        <stop offset="50%" stop-color="#9B5DE5" />
+                        <stop offset="100%" stop-color="#E84057" />
+                    </linearGradient>
+                </defs>
+            </svg>
+        </div>
+    </section>
+
+    <!-- Interactive Demo Section -->
+    <section class="demo-section" id="demo">
+        <div class="section-header">
+            <span class="section-badge">Experience It Now</span>
+            <h2>Interactive App Demo</h2>
+            <p>Explore the HeartSync interface with simulated data. No signup required.</p>
+        </div>
+
+        <div class="demo-container">
+            <!-- Phone Mockup -->
+            <div class="phone-mockup">
+                <div class="phone-notch"></div>
+                <div class="phone-screen">
+                    <!-- App Header -->
+                    <div class="app-header">
+                        <div class="app-logo">
+                            <span>💕</span>
+                            <span>HeartSync</span>
+                        </div>
+                        <div class="partner-status">
+                            <span class="partner-avatar">🦋✨</span>
+                            <span class="status-dot online"></span>
+                        </div>
+                    </div>
+
+                    <!-- Stats Cards -->
+                    <div class="stats-grid">
+                        <div class="stat-card" onclick="animateHeart(this)">
+                            <span class="stat-emoji">❤️</span>
+                            <span class="stat-value" id="heartsCount">847</span>
+                            <span class="stat-label">Hearts</span>
+                            <div class="stat-tap-hint">Tap to send</div>
+                        </div>
+                        <div class="stat-card">
+                            <span class="stat-emoji">🛡️</span>
+                            <span class="stat-value">92</span>
+                            <span class="stat-label">Trust</span>
+                        </div>
+                        <div class="stat-card">
+                            <span class="stat-emoji">🔥</span>
+                            <span class="stat-value">14</span>
+                            <span class="stat-label">Streak</span>
+                        </div>
+                    </div>
+
+                    <!-- Users Display -->
+                    <div class="users-display">
+                        <div class="user-profile">
+                            <span class="user-emojis">🧚💚🌸</span>
+                            <span class="user-name">Precious</span>
+                        </div>
+                        <div class="heart-connection">
+                            <span class="connecting-heart">💕</span>
+                            <div class="connection-pulse"></div>
+                        </div>
+                        <div class="user-profile">
+                            <span class="user-emojis">🦋✨🖤</span>
+                            <span class="user-name">Safari</span>
+                        </div>
+                    </div>
+
+                    <!-- Dr. Harmony Widget -->
+                    <div class="harmony-widget">
+                        <div class="harmony-header">
+                            <span>🌸</span>
+                            <span>Dr. Harmony</span>
+                            <span class="harmony-badge">AI Therapist</span>
+                        </div>
+                        <p class="harmony-message" id="harmonyMessage">Your connection is thriving! 14-day streak shows
+                            remarkable consistency. Consider planning a surprise date this weekend. 💕</p>
+                        <button class="harmony-btn" onclick="cycleHarmonyMessage()">Get New Insight ✨</button>
+                    </div>
+
+                    <!-- Quick Actions -->
+                    <div class="quick-actions">
+                        <button class="action-primary" onclick="showToast('Opening chat...')">💬 Chat</button>
+                        <button class="action-secondary" onclick="showToast('Dr. Harmony is thinking...')">🌸
+                            Therapy</button>
+                    </div>
+
+                    <!-- Menu Grid -->
+                    <div class="menu-grid">
+                        <button class="menu-item" onclick="showToast('Love Letters 💌')">
+                            <span>💌</span>
+                            <span>Letters</span>
+                        </button>
+                        <button class="menu-item" onclick="showToast('Flag System 🚩')">
+                            <span>🚩</span>
+                            <span>Flags</span>
+                        </button>
+                        <button class="menu-item" onclick="showToast('Memory Lane 📸')">
+                            <span>📸</span>
+                            <span>Memories</span>
+                        </button>
+                        <button class="menu-item" onclick="showToast('Calendar 📅')">
+                            <span>📅</span>
+                            <span>Calendar</span>
+                        </button>
+                        <button class="menu-item" onclick="showToast('Trust Store 🎁')">
+                            <span>🎁</span>
+                            <span>Store</span>
+                        </button>
+                        <button class="menu-item" onclick="showToast('Mini Games 🎮')">
+                            <span>🎮</span>
+                            <span>Games</span>
+                        </button>
+                        <button class="menu-item" onclick="showToast('Love Beacon 📡')">
+                            <span>📡</span>
+                            <span>Beacon</span>
+                        </button>
+                    </div>
+                </div>
+                <div class="phone-home-indicator"></div>
+            </div>
+
+            <!-- Demo Description -->
+            <div class="demo-info">
+                <h3>Feel the Connection</h3>
+                <p>This interactive mockup demonstrates HeartSync's intuitive interface. Every element is designed to
+                    strengthen emotional bonds through beautiful, intentional interactions.</p>
+
+                <div class="demo-features">
+                    <div class="demo-feature">
+                        <span class="demo-feature-icon">👆</span>
+                        <div>
+                            <strong>Tap the Hearts</strong>
+                            <p>Watch the counter animate. In the real app, this sends love to your partner instantly.
+                            </p>
+                        </div>
+                    </div>
+                    <div class="demo-feature">
+                        <span class="demo-feature-icon">🧠</span>
+                        <div>
+                            <strong>AI-Powered Insights</strong>
+                            <p>Dr. Harmony provides personalized relationship advice based on your patterns.</p>
+                        </div>
+                    </div>
+                    <div class="demo-feature">
+                        <span class="demo-feature-icon">🔒</span>
+                        <div>
+                            <strong>End-to-End Encrypted</strong>
+                            <p>All messages and data are encrypted. Only you and your partner can read them.</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="tech-stack">
+                    <span class="tech-label">Built With</span>
+                    <div class="tech-badges">
+                        <span>Next.js</span>
+                        <span>TypeScript</span>
+                        <span>TweetNaCl</span>
+                        <span>WebRTC</span>
+                        <span>Framer Motion</span>
+                    </div>
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- Privacy Section -->
-    <section class="privacy" id="privacy">
-        <div class="privacy-content">
-            <div class="privacy-text reveal">
-                <h2>Your Privacy is Sacred</h2>
-                <p>We built HeartSync with privacy at its core. Your intimate moments belong to you and your partner—no one else.</p>
-                <div class="privacy-features">
-                    <div class="privacy-feature">
-                        <div class="privacy-feature-icon">✓</div>
-                        <span>End-to-end encryption for all messages</span>
-                    </div>
-                    <div class="privacy-feature">
-                        <div class="privacy-feature-icon">✓</div>
-                        <span>Self-hosted option for maximum control</span>
-                    </div>
-                    <div class="privacy-feature">
-                        <div class="privacy-feature-icon">✓</div>
-                        <span>No data sold to third parties, ever</span>
-                    </div>
-                    <div class="privacy-feature">
-                        <div class="privacy-feature-icon">✓</div>
-                        <span>Quick-hide panic button for emergencies</span>
-                    </div>
-                    <div class="privacy-feature">
-                        <div class="privacy-feature-icon">✓</div>
-                        <span>Open source and auditable</span>
-                    </div>
-                </div>
+    <!-- Features Grid -->
+    <section class="features" id="features">
+        <div class="section-header">
+            <span class="section-badge">Complete Feature Set</span>
+            <h2>Everything Your Love Needs</h2>
+            <p>A comprehensive suite of tools designed to nurture connection.</p>
+        </div>
+
+        <div class="features-grid">
+            <div class="feature-card">
+                <div class="feature-icon">🔐</div>
+                <h4>E2E Encryption</h4>
+                <p>Military-grade encryption using TweetNaCl. Not even we can read your messages.</p>
             </div>
-            <div class="privacy-visual reveal">
-                <div class="shield-ring"></div>
-                <div class="shield-ring"></div>
-                <div class="shield-ring"></div>
-                <div class="lock-icon">🔒</div>
+            <div class="feature-card">
+                <div class="feature-icon">💬</div>
+                <h4>Real-time Chat</h4>
+                <p>Instant messaging with typing indicators, reactions, and read receipts.</p>
+            </div>
+            <div class="feature-card">
+                <div class="feature-icon">💌</div>
+                <h4>Love Letters</h4>
+                <p>Write heartfelt letters that arrive with beautiful animations.</p>
+            </div>
+            <div class="feature-card">
+                <div class="feature-icon">🚩</div>
+                <h4>Flag System</h4>
+                <p>Communicate feelings with green and red flags on a -5 to +5 scale.</p>
+            </div>
+            <div class="feature-card">
+                <div class="feature-icon">📸</div>
+                <h4>Memory Lane</h4>
+                <p>Create a beautiful timeline of your relationship milestones.</p>
+            </div>
+            <div class="feature-card">
+                <div class="feature-icon">🎮</div>
+                <h4>Mini Games</h4>
+                <p>Truth or Dare, Would You Rather, Love Quiz, and more.</p>
+            </div>
+            <div class="feature-card">
+                <div class="feature-icon">📅</div>
+                <h4>Shared Calendar</h4>
+                <p>Never miss an anniversary with countdowns and reminders.</p>
+            </div>
+            <div class="feature-card">
+                <div class="feature-icon">🌸</div>
+                <h4>Dr. Harmony AI</h4>
+                <p>AI-powered relationship insights and conversation starters.</p>
             </div>
         </div>
     </section>
 
     <!-- CTA Section -->
-    <section class="cta" id="cta">
-        <div class="cta-box reveal">
-            <div class="cta-content">
-                <h2>Ready to Start Your Love Story?</h2>
-                <p>Join thousands of couples who trust HeartSync for their private moments. It's free to start.</p>
-                <a href="/login" class="btn-primary">
-                    <span>💕</span>
-                    <span>Get Started Free</span>
+    <section class="cta-section">
+        <div class="cta-content">
+            <h2>Ready to Sync Your Hearts?</h2>
+            <p>HeartSync is open source and privacy-first. Built with love for couples who value connection.</p>
+            <div class="cta-buttons">
+                <a href="https://github.com/PreciousMuriithi/HeartSync" target="_blank" class="btn-primary">
+                    <span>⭐</span>
+                    <span>View on GitHub</span>
+                </a>
+                <a href="#demo" class="btn-secondary">
+                    <span>🎮</span>
+                    <span>Try Demo Again</span>
                 </a>
             </div>
         </div>
@@ -1001,31 +422,41 @@
 
     <!-- Footer -->
     <footer>
-        <div class="footer-logo">💕</div>
-        <div class="footer-links">
-            <a href="#features">Features</a>
-            <a href="#privacy">Privacy</a>
-            <a href="#how-it-works">How It Works</a>
-            <a href="https://github.com/PreciousMuriithi/HeartSync" target="_blank">GitHub</a>
+        <div class="footer-content">
+            <div class="footer-logo">
+                <span>💕</span>
+                <span>HeartSync</span>
+            </div>
+            <p class="footer-tagline">Where Psychology Meets Physiology</p>
+            <div class="footer-links">
+                <a href="#how-it-works">How It Works</a>
+                <a href="#demo">Demo</a>
+                <a href="#features">Features</a>
+                <a href="https://github.com/PreciousMuriithi/HeartSync" target="_blank">GitHub</a>
+            </div>
+            <p class="footer-copyright">
+                © 2026 HeartSync. Made with <span class="heart">💕</span> by Precious & Safari
+            </p>
         </div>
-        <p class="footer-copyright">
-            Made with <span>💕</span> for couples who value privacy
-        </p>
     </footer>
+
+    <!-- Toast Notification -->
+    <div class="toast" id="toast"></div>
 
     <script>
         // Create floating hearts
         function createFloatingHearts() {
             const container = document.getElementById('floatingHearts');
-            const hearts = ['💕', '❤️', '💖', '💗', '💝', '💓', '💘'];
-            
-            for (let i = 0; i < 15; i++) {
+            const hearts = ['💕', '❤️', '💖', '💗', '💝', '💓', '💘', '🧠', '🫀'];
+
+            for (let i = 0; i < 20; i++) {
                 const heart = document.createElement('span');
                 heart.className = 'floating-heart';
                 heart.textContent = hearts[Math.floor(Math.random() * hearts.length)];
                 heart.style.left = Math.random() * 100 + '%';
                 heart.style.animationDelay = Math.random() * 20 + 's';
                 heart.style.animationDuration = 15 + Math.random() * 10 + 's';
+                heart.style.fontSize = (16 + Math.random() * 20) + 'px';
                 container.appendChild(heart);
             }
         }
@@ -1041,57 +472,97 @@
             }
         });
 
-        // Reveal on scroll
-        function reveal() {
-            const reveals = document.querySelectorAll('.reveal');
-            const windowHeight = window.innerHeight;
-            
-            reveals.forEach(element => {
-                const elementTop = element.getBoundingClientRect().top;
-                const revealPoint = 150;
-                
-                if (elementTop < windowHeight - revealPoint) {
-                    element.classList.add('active');
-                }
-            });
+        // Mobile menu toggle
+        function toggleMobileMenu() {
+            const navLinks = document.querySelector('.nav-links');
+            navLinks.classList.toggle('mobile-open');
         }
-        
-        window.addEventListener('scroll', reveal);
-        reveal(); // Initial check
 
-        // Smooth scrolling for anchor links
+        // Heart tap animation
+        function animateHeart(element) {
+            const counter = document.getElementById('heartsCount');
+            let count = parseInt(counter.textContent);
+            count += 1;
+            counter.textContent = count;
+
+            element.classList.add('tapped');
+            setTimeout(() => element.classList.remove('tapped'), 300);
+
+            // Create floating heart
+            const heart = document.createElement('span');
+            heart.className = 'tap-heart';
+            heart.textContent = '❤️';
+            heart.style.left = Math.random() * 60 + 20 + '%';
+            element.appendChild(heart);
+            setTimeout(() => heart.remove(), 1000);
+        }
+
+        // Dr. Harmony messages
+        const harmonyMessages = [
+            "Your connection is thriving! 14-day streak shows remarkable consistency. Consider planning a surprise date this weekend. 💕",
+            "I notice increased messaging during evenings. This synchronicity suggests strong emotional alignment. Keep nurturing this rhythm! ✨",
+            "Trust score is exceptional at 92%! Your transparency and vulnerability are building an unshakeable foundation. 🛡️",
+            "Based on your patterns, a thoughtful morning message would resonate deeply with your partner today. Try it! 🌅",
+            "847 hearts exchanged! Each one represents a moment of intentional connection. Beautiful work, both of you. 💖",
+            "Your relationship shows hallmarks of secure attachment. Continue practicing active listening and validation. 🧠"
+        ];
+        let currentMessageIndex = 0;
+
+        function cycleHarmonyMessage() {
+            currentMessageIndex = (currentMessageIndex + 1) % harmonyMessages.length;
+            const messageEl = document.getElementById('harmonyMessage');
+            messageEl.style.opacity = '0';
+            setTimeout(() => {
+                messageEl.textContent = harmonyMessages[currentMessageIndex];
+                messageEl.style.opacity = '1';
+            }, 300);
+        }
+
+        // Toast notifications
+        function showToast(message) {
+            const toast = document.getElementById('toast');
+            toast.textContent = message;
+            toast.classList.add('show');
+            setTimeout(() => toast.classList.remove('show'), 2500);
+        }
+
+        // Smooth scrolling
         document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-            anchor.addEventListener('click', function(e) {
+            anchor.addEventListener('click', function (e) {
                 e.preventDefault();
                 const target = document.querySelector(this.getAttribute('href'));
                 if (target) {
-                    target.scrollIntoView({
-                        behavior: 'smooth',
-                        block: 'start'
-                    });
+                    target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+                    // Close mobile menu if open
+                    document.querySelector('.nav-links').classList.remove('mobile-open');
                 }
             });
         });
 
-        // Mobile menu toggle (basic implementation)
-        const mobileMenuBtn = document.querySelector('.mobile-menu-btn');
-        const navLinks = document.querySelector('.nav-links');
-        
-        mobileMenuBtn?.addEventListener('click', () => {
-            navLinks.style.display = navLinks.style.display === 'flex' ? 'none' : 'flex';
-            navLinks.style.position = 'absolute';
-            navLinks.style.top = '100%';
-            navLinks.style.left = '0';
-            navLinks.style.right = '0';
-            navLinks.style.background = 'rgba(10, 10, 12, 0.95)';
-            navLinks.style.flexDirection = 'column';
-            navLinks.style.padding = '1rem';
-            navLinks.style.borderTop = '1px solid rgba(255, 255, 255, 0.05)';
+        // Intersection Observer for animations
+        const observerOptions = {
+            threshold: 0.1,
+            rootMargin: '0px 0px -50px 0px'
+        };
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('visible');
+                }
+            });
+        }, observerOptions);
+
+        document.querySelectorAll('.card, .feature-card, .demo-feature').forEach(el => {
+            observer.observe(el);
         });
 
         // Console easter egg
-        console.log('%c💕 HeartSync - Made with love for Precious & Safari 💕', 
-            'color: #E84057; font-size: 20px; font-weight: bold;');
+        console.log('%c💕 HeartSync - Where Psychology Meets Physiology 💕',
+            'color: #E84057; font-size: 24px; font-weight: bold;');
+        console.log('%cBuilt with love by Precious & Safari',
+            'color: #9B5DE5; font-size: 14px;');
     </script>
 </body>
+
 </html>
